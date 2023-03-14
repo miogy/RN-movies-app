@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
 import { Asset } from "expo-asset";
+import { NavigationContainer } from "@react-navigation/native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -37,10 +38,10 @@ export default function App() {
     return null;
   }
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
+    <NavigationContainer style={styles.container} onLayout={onLayoutRootView}>
       <Text>SplashScreen Demo! 👋</Text>
       <Entypo name="rocket" size={30} />
-    </View>
+    </NavigationContainer>
   );
 }
 

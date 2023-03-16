@@ -10,7 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 SplashScreen.preventAutoHideAsync();
 
 //hook
-const loadFont = (fonts) => FontFaceSet.map((font) => Font.loadAsync(font));
+const loadFont = (fonts) => fonts.map((font) => Font.loadAsync(font));
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);

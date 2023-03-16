@@ -11,6 +11,14 @@ SplashScreen.preventAutoHideAsync();
 
 //hook
 const loadFont = (fonts) => fonts.map((font) => Font.loadAsync(font));
+const loadImage = (imgs) =>
+  imgs.map((img) => {
+    if (typeof img === "string") {
+      return Image.prefetch(img);
+    } else {
+      return Asset.loadAsync(img);
+    }
+  });
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -20,7 +28,7 @@ export default function App() {
       try {
         // 필요한 api
         const fonts = loadFont([Ionicons.font]);
-        await Asset.loadAsync(require("./assets/snack-icon.png"));
+        const imgs = loadImage([require("./img.png")]);
         await new Promise((resolve) => setTimeout(resolve, 2000));
       } catch (e) {
         console.warn(e);

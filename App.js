@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
@@ -15,7 +15,7 @@ export default function App() {
     async function prepare() {
       try {
         // 필요한 api
-        await Font.loadAsync();
+        // await Font.loadAsync();
         await Asset.loadAsync(require("./assets/snack-icon.png"));
         await new Promise((resolve) => setTimeout(resolve, 2000));
       } catch (e) {
@@ -40,7 +40,6 @@ export default function App() {
   return (
     <NavigationContainer style={styles.container} onLayout={onLayoutRootView}>
       <Text>SplashScreen Demo! 👋</Text>
-      <Entypo name="rocket" size={30} />
     </NavigationContainer>
   );
 }

@@ -5,8 +5,12 @@ import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
 import { Asset } from "expo-asset";
 import { NavigationContainer } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 
 SplashScreen.preventAutoHideAsync();
+
+//hook
+const loadFont = (fonts) => FontFaceSet.map((font) => Font.loadAsync(font));
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -15,7 +19,7 @@ export default function App() {
     async function prepare() {
       try {
         // 필요한 api
-        // await Font.loadAsync();
+        const fonts = loadFont([Ionicons.font]);
         await Asset.loadAsync(require("./assets/snack-icon.png"));
         await new Promise((resolve) => setTimeout(resolve, 2000));
       } catch (e) {
